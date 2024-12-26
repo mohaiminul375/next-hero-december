@@ -1,4 +1,4 @@
-import Heading from "@/Components/Heading";
+import Heading from "@/components/Heading";
 
 
 export default function Home() {
