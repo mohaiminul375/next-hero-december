@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const getPost = async () => {
   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
   const data = await res.json();
@@ -6,7 +8,7 @@ const getPost = async () => {
 
 const PostsPage = async () => {
   const posts = await getPost();
-//   console.log(posts);
+  //   console.log(posts);
   return (
     <section className="mt-20">
       <div>
@@ -17,11 +19,17 @@ const PostsPage = async () => {
       {/* cards */}
       <div className="grid md:grid-cols-4 gap-6 mt-10">
         {posts?.slice(0, 19).map(({ id, title, body }) => (
-          <div
-          className="border-2 border-teal-500 p-4 rounded-md"
-          key={id}>
+          <div className="border-2 border-teal-500 p-4 rounded-md" key={id}>
             <h6 className="font-bold mb-3">{title}</h6>
             <h6>{body}</h6>
+            <div className="my-2">
+              <Link
+                href={`/posts/${id}`}
+                className="px-4 py-1 bg-teal-500 text-white rounded-2xl"
+              >
+                View Details
+              </Link>
+            </div>
           </div>
         ))}
       </div>
